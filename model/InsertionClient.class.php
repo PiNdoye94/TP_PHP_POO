@@ -25,9 +25,9 @@
 		        'email' => $Client->getEmail()
      		));
 
-     		if ($requete) {
+     		/*if ($requete) {
      			echo "données client inséres";
-			}else{echo "données client non inséres";}
+			}else{echo "données client non inséres";}*/
 		}
 
 		public function insertionClientSalarie(ClientSalarie $clientSalarie){
@@ -46,9 +46,9 @@
 	        'validite_CIN' => $clientSalarie->getValidite_CIN()
      		));
 
-     		if ($requete) {
+     		/*if ($requete) {
      			echo "données client salarie inséres";
-			}else{echo "données client salarie non inséres";}
+			}else{echo "données client salarie non inséres";}*/
 		}
 
 		public function insertionClienNonSalarie(){

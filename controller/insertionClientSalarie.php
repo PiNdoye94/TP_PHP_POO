@@ -37,6 +37,8 @@
 	    $agios_compte_courant = $_POST['agios_compte_courant'];
 	    $id_client = 1;
 	    $id_Responsable_Compte = 1;
+	    $id_compte = 1;
+	    $id_agios = 1;
    
 	//}
 
@@ -99,15 +101,64 @@
 	echo $Compte->getDate_Ouverture();
 	echo $Compte->getSolde();
 
-				
-				
-				
-				
-				
+	//Données table compte courant
+	//$CompteCourant->setId_Compte_Courant($id_compte_courant);
+	$CompteCourant->setNom_Employeur($nom_Employeur);
+	$CompteCourant->setAdresse_Employeur($Adresse_employeur);
+	$CompteCourant->setRaison_Sociale($raison_sociale);
+	$CompteCourant->setId_Compte($id_compte);
+	$CompteCourant->setId_Agios($id_agios);
 
 	//Données table compte courant
+	//echo $CompteCourant->getId_Compte_Courant();
+	echo $CompteCourant->getNom_Employeur();
+	echo $CompteCourant->getAdresse_Employeur();
+	echo $CompteCourant->getRaison_Sociale();
+	echo $CompteCourant->getId_Compte();
+	echo $CompteCourant->getId_Agios();
 
 
 	$insertClient->insertionClientSalarie($ClientSalarie);
-	$insertClient->InsertionClient($Client);
-	$insertCompte->InsertionCompte($Compte);
+	$insertClient->insertionClient($Client);
+	$insertCompte->insertionCompte($Compte);
+	$insertCompte->insertionCompteCourant($CompteCourant);
+
+?>
+
+	<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>OUVERTURE COMPTE</title>
+        <link rel="stylesheet" href="../public/css/style.css"/>
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <img src="../public/img/logobp.png"/>
+            </div>
+            <div id="welcome">
+                <h1>BIENVENUE DANS LA BANQUE DU PEUPLE !!</h1>
+            </div>
+        </header>
+            <div>
+                <button><a href="../index.php">RETOUR A L'ACCUEIL</a></button>
+            </div>
+            <div id="confirm" style="background-color: white; margin: 15px;" >
+            <p style="text-align: center;font-size: 30px;">
+            	<?php
+	                if($requete)
+	                {
+	                    echo 'Client enregistré dans la base de données';
+	                }
+	                else
+	                {
+	                    echo "Client non enregistré dans la base de données";
+	                }
+            	?>	
+            </p>
+                
+            </div>
+    </body>
+</html>
+

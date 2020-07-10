@@ -1,5 +1,5 @@
 <?php
-
+	error_reporting(-1);
 	include "../model/db.php";
 	include "ControllerClient/C_Client.php";
 	include "ControllerClient/C_ClientSalarie.php";
@@ -10,7 +10,7 @@
 	include "../model/InsertionClient.class.php";
 	include "../model/InsertionCompte.class.php";
 
-	//if (isset($_Post['envoyer'])) {
+	//if (isset($_Post['envoyer'] )) {
 		
 		$nom = $_POST['nom']; 
 	    $prenom = $_POST['prenom']; 
@@ -31,8 +31,9 @@
 	    $identifiant_employeur = $_POST['identifiant_employeur'];
 	    $Adresse_employeur = $_POST['Adresse_employeur'];
 	    $date_ouverture = $_POST['date_ouverture'];
-	    $durée_blocage = $_POST['duree_blocage'];
+	    $duree_blocage = $_POST['duree_blocage'];
 	    $solde = $_POST['solde'];
+	    $MontantRenumeration = $_POST['MontantRenumeration'];
 	    $frais_ouverture = $_POST['frais_ouverture'];
 	    $agios_compte_courant = $_POST['agios_compte_courant'];
 	    $id_client = 1;
@@ -51,6 +52,8 @@
 	$Client = new Client();
 	$Compte = new Compte();
 	$CompteCourant = new CompteCourant();
+	$CompteEpargne = new CompteEpargne();
+	$CompteBloque = new CompteBloque();
 
 	//Données table clients
 	$Client->setNom($nom);
@@ -109,23 +112,47 @@
 	$CompteCourant->setId_Compte($id_compte);
 	$CompteCourant->setId_Agios($id_agios);
 
-	//Données table compte courant
-	//echo $CompteCourant->getId_Compte_Courant();
 	echo $CompteCourant->getNom_Employeur();
 	echo $CompteCourant->getAdresse_Employeur();
 	echo $CompteCourant->getRaison_Sociale();
 	echo $CompteCourant->getId_Compte();
 	echo $CompteCourant->getId_Agios();
 
+	//Données table compte epargne
+	$CompteEpargne->setFrais_Compte($frais_ouverture);
+	$CompteEpargne->setId_Compte($id_compte);
+	$CompteEpargne->setMontant_Renumeration($MontantRenumeration);
+
+	echo $CompteEpargne->getFrais_Compte();
+	echo $CompteEpargne->getId_Compte();
+	echo $CompteEpargne->getMontant_Renumeration();
+
+	//Données table compte bloque
+	$CompteBloque->setFrais_Compte($frais_ouverture);
+	$CompteBloque->setDuree_Blocage($duree_blocage);
+	$CompteBloque->setId_Compte($id_compte);
+	$CompteBloque->setMontant_Renumeration($MontantRenumeration);
+
+	echo $CompteBloque->getFrais_Compte();
+	echo $CompteBloque->getDuree_Blocage();
+	echo $CompteBloque->getId_Compte();
+	echo $CompteBloque->getMontant_Renumeration();
+
 
 	$insertClient->insertionClientSalarie($ClientSalarie);
 	$insertClient->insertionClient($Client);
 	$insertCompte->insertionCompte($Compte);
 	$insertCompte->insertionCompteCourant($CompteCourant);
+	$insertCompte->insertionCompteEpargne($CompteEpargne);
+	$insertCompte->insertionCompteBloque($CompteBloque);
+
+	/*header('Location: http://localhost/Mes_Projets/Projet_BP_PHP_POO/controller/insertionClientSalarie.php');
+    exit();*/
+
 
 ?>
 
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8"/>
@@ -142,12 +169,13 @@
             </div>
         </header>
             <div>
-                <button><a href="../index.php">RETOUR A L'ACCUEIL</a></button>
+                <button><a href="../accueil.php">RETOUR A L'ACCUEIL</a></button>
             </div>
             <div id="confirm" style="background-color: white; margin: 15px;" >
             <p style="text-align: center;font-size: 30px;">
             	<?php
-	                if($requete)
+            		error_reporting(-1);
+	                if($insertClient && $insertCompte)
 	                {
 	                    echo 'Client enregistré dans la base de données';
 	                }

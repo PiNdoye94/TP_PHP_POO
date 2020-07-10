@@ -152,6 +152,11 @@
                             <input type="text" name="solde" id="solde" class="input_saisie"/>
                             <span id="error_soldeMessage"></span>
                         </div>
+                        <div>                            
+                            <label for="MontantRenumeration">Montant de Renumeration<span id="error_montant_r"></span> </label>
+                            <input type="text" name="MontantRenumeration" id="MontantRenumeration" class="input_saisie"/>
+                            <span id="error_montant_rMessage"></span>
+                        </div>
                         <div id="fraisOuverture">
                             <label for="frais_ouverture">Fais d'ouverture Compte<span id="error_fraisOuverture"></span> </label>
                             <input type="text" name="frais_ouverture" id="frais_ouverture" class="input_saisie"/>

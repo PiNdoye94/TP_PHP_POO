@@ -1,5 +1,5 @@
 <?php
-
+	error_reporting(-1);
 	class InsertionCompte
 	{
 		private $db;
@@ -31,9 +31,9 @@
 			$requete="INSERT INTO compte_courant VALUES(NULL, :nom_employeur, :adresse_employeur, :raison_social, :id_compte, :id_agios)";
 		    $requete_insertion=$this->db->prepare($requete);
 		    $requete_insertion->execute(array(
-		        'nom_employeur' => $_POST["nom_Employeur"],
-		        'adresse_employeur' => $_POST["Adresse_employeur"],
-		        'raison_social' => $_POST["raison_sociale"],
+		        'nom_employeur' => $CompteCourant->getNom_Employeur(),
+		        'adresse_employeur' => $CompteCourant->getAdresse_Employeur(),
+		        'raison_social' => $CompteCourant->getRaison_Sociale(),
 		        'id_compte' => 1,
 		        'id_agios' => 1
 		    ));
@@ -42,12 +42,29 @@
 			}else{echo "données compte courant non inséres";}*/
 
 		}
-		/*public function insertionCompteEpargne(){
+		public function insertionCompteEpargne(CompteEpargne $CompteEpargne){
+			$requete="INSERT INTO compte_epargne VALUES(NULL, :frais_compte, :id_compte, :montant_renumeration)";
+		    $requete_insertion=$this->db->prepare($requete);
+		    $requete_insertion->execute(array(
+		        'frais_compte' => $CompteEpargne->getFrais_Compte(),
+		        'id_compte' => 1,
+		        'montant_renumeration' => $CompteEpargne->getMontant_Renumeration()
+		        
+		    ));
 			
 		}
-		public function insertionCompteBloque(){
+		public function insertionCompteBloque(CompteBloque $CompteBloque){
+			$requete="INSERT INTO compte_bloque VALUES(NULL, :frais_compte, :duree_blocage, :id_compte, :montant_renumeration)";
+		    $requete_insertion=$this->db->prepare($requete);
+		    $requete_insertion->execute(array(
+		        'frais_compte' => $CompteBloque->getFrais_Compte(),
+		        'duree_blocage' => $CompteBloque->getDuree_Blocage(),
+		        'id_compte' => 1,
+		        'montant_renumeration' => $CompteBloque->getMontant_Renumeration(),
+		        
+		    ));
 			
-		}*/
+		}
 
 		/*public function getConfirmation(){
 

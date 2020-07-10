@@ -1,6 +1,6 @@
 <?php
 
-	
+	error_reporting(-1);
 	class CompteCourant
 	{
 		private $Id_Compte_Courant;

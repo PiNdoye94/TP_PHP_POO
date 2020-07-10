@@ -15,7 +15,7 @@
               </div>
           </header>
           <div>
-              <button><a href="../index.php">RETOUR A L'ACCUEIL</a></button>
+              <button><a href="../accueil.php">RETOUR A L'ACCUEIL</a></button>
           </div>
         
           <form id="typeClient">

@@ -15,7 +15,7 @@
             </div>
         </header>
         <div>
-            <button><a href="../index.php">RETOUR A L'ACCUEIL</a></button>
+            <button><a href="../accueil.php">RETOUR A L'ACCUEIL</a></button>
         </div>
 
         <form id="typeClient">
@@ -30,7 +30,7 @@
                   </div>
           </form>
 
-          <form id="formulaire" name="ouvertureCompte" action="../controller/ControllerClient/C_ClientSalarie.php" method="POST">  
+          <form id="formulaire" name="ouvertureCompte" action="../controller/insertionClientNonSalarie.php" method="POST">  
                 <fieldset id="donneesClient">
                   <legend>Informations client</legend>
                         <div>
@@ -107,12 +107,17 @@
                             <input type="date" id="date_ouverture" name="date_ouverture" value="" min="" max="" class="input_saisie"/> 
                         </div>
                         <div id="dureeBlocage">                            
-                            <label for="durée_blocage">Durée de Blocage </label>
-                            <input type="date" name="durée_blocage" id="durée_blocage" class="input_saisie"/>
+                            <label for="duree_blocage">Durée de Blocage </label>
+                            <input type="date" name="duree_blocage" id="duree_blocage" class="input_saisie"/>
                         </div>
                         <div>                            
                             <label for="solde">Solde </label>
                             <input type="text" name="solde" id="solde" class="input_saisie"/>
+                        </div>
+                        <div>                            
+                            <label for="MontantRenumeration">Montant de Renumeration<span id="error_montant_r"></span> </label>
+                            <input type="text" name="MontantRenumeration" id="MontantRenumeration" class="input_saisie"/>
+                            <span id="error_montant_rMessage"></span>
                         </div>
                         <div id="fraisOuverture">
                             <label for="frais_ouverture">Fais d'ouverture Compte </label>

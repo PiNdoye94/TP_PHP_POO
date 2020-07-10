@@ -60,10 +60,8 @@
 		        'frais_compte' => $CompteBloque->getFrais_Compte(),
 		        'duree_blocage' => $CompteBloque->getDuree_Blocage(),
 		        'id_compte' => 1,
-		        'montant_renumeration' => $CompteBloque->getMontant_Renumeration(),
-		        
-		    ));
-			
+		        'montant_renumeration' => $CompteBloque->getMontant_Renumeration()        
+		    ));	
 		}
 
 		/*public function getConfirmation(){

@@ -51,16 +51,17 @@
 			}else{echo "données client salarie non inséres";}*/
 		}
 
-		public function insertionClienNonSalarie(){
+		public function insertionClienNonSalarie(ClientNonSalarie $ClientNonSalarie){
 
-			$requete = "INSERT INTO clients VALUES(NULL, '$nom', '$adresse', '$telephone', '$email')";
-
-	        //$db = connexion();
-	        $ok = $db->exec($requete);
-
-	        return $ok;
-
-	            $ok->closeCursor();
+			$requete="INSERT INTO client_non_salarie VALUES(NULL, :prenom, :activite, :id_client, :carte_identite, :validite_CIN)";
+		    $requete_insertion=$this->db->prepare($requete);
+		    $requete_insertion->execute(array(
+		        'prenom' => $ClientNonSalarie->getPrenom(),
+		        'activite' => $ClientNonSalarie->getActivite(),
+		        'id_client' => 1,
+		        'carte_identite' => $ClientNonSalarie->getCarte_Identite(),
+		        'validite_CIN' => $ClientNonSalarie->getValidite_CIN()
+		     ));
 		}
 
 		public function insertionClientMoral(){
